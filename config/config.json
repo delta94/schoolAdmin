@@ -1,0 +1,5 @@
+{
+    "api":"http://thenextschool-001-site1.gtempurl.com/api/AppLogin/GetUserLogin",
+    "sendNotificationApi":"http://thenextschool-001-site1.gtempurl.com/api/AppLogin/NoticeBoardCreate",
+    "Token":"abe9fad8-7852-43ed-9ab9-fcea44da49b8"
+}
