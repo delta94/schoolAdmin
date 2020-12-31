@@ -35,9 +35,9 @@ class SendNotification extends Component {
     }
     sendData=()=>{
         if(this.state.title && this.state.notice){
-            alert("please fill the data")
+            this.props.sendNotification(this.state, this.props.navigation)
         }else{
-            this.props.sendNotification(this.state)
+            alert("please fill the data")
         }
     }
     render() {

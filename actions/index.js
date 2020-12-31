@@ -1,6 +1,5 @@
 import axios from "axios";
 import config from "../config/config.json";
-import { useNavigation } from '@react-navigation/native';
 import {
 ADMIN
 } from "./types";
@@ -28,6 +27,6 @@ if(res.data.Error){
 }
 export const sendNotification=(data,nav)=>async(dispatch)=>{
     const res= await axios.post(config.sendNotificationApi,data);
-    useNavigation().navigate('campus')
+    nav.navigate('campus')
     console.log("res",res.data)
 }
