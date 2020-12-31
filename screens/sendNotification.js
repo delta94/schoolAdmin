@@ -13,6 +13,8 @@ import {
     Form,
     Button,
     Text,
+    Spinner,
+    View
 } from "native-base"
 class SendNotification extends Component {
     state={
@@ -23,7 +25,8 @@ class SendNotification extends Component {
         notice_type_id:'',
         grade_Id:'',
         CampusId:'',
-        Creater_Id:''
+        Creater_Id:'',
+        isLoading:false
     }
     componentDidMount(){
         this.setState({
@@ -35,11 +38,13 @@ class SendNotification extends Component {
     }
     sendData=()=>{
         if(this.state.title && this.state.notice){
-            this.props.sendNotification(this.state, this.props.navigation)
+            this.renderSpinner();
+            this.props.sendNotification(this.state, this.props.navigation,this.renderSpinner)
         }else{
             alert("please fill the data")
         }
     }
+    renderSpinner=()=>this.setState({isLoading:!this.state.isLoading})
     render() {
         return (
             <Container style={styles.container}>
@@ -95,8 +100,12 @@ class SendNotification extends Component {
                     }
                 </Picker>
                 <Button block style={{backgroundColor:'green',marginTop:20}} onPress={this.sendData}>
-                    <Text>Send Notification</Text>
+                    {this.state.isLoading?<Spinner size={20} color="grey"/>:
+                    <View style={styles.btn}>
+                    <Text style={{color:'white',marginRight:20}}>Send Notification</Text>
                     <Ionicons name="send" size={24} color="white" />
+                    </View>
+                    }  
                 </Button>
 
                 </Form>
@@ -111,6 +120,10 @@ const styles={
     container:{
         flex:1,
         alignItems:'center'
+    },
+    btn:{
+        display:'flex',
+        flexDirection:'row'
     }
 }
 function mapStateToProps({admin}){

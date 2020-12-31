@@ -58,7 +58,7 @@ class Campus extends Component {
                         </Body>
                     </CardItem>
                 </Card>
-                <Button style={styles.btn} onPress={this.props.navigation.navigate('sendNotification',this.props.route.params)}>
+                <Button style={styles.btn} onPress={()=>this.props.navigation.navigate('sendNotification',this.props.route.params)}>
                     <Entypo name="plus" size={50} color="white" />
                 </Button>
             </Container>

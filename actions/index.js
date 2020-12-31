@@ -25,8 +25,11 @@ if(res.data.Error){
     spinnerRender();
 }
 }
-export const sendNotification=(data,nav)=>async(dispatch)=>{
+export const sendNotification=(data,nav,renderSpinner)=>async(dispatch)=>{
+    delete data.isLoading
+    console.log("data",data)
     const res= await axios.post(config.sendNotificationApi,data);
-    nav.navigate('campus')
+    renderSpinner();
+    nav.navigate('campus');
     console.log("res",res.data)
 }
