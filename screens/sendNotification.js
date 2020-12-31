@@ -33,6 +33,13 @@ class SendNotification extends Component {
             Token:config.Token
         })
     }
+    sendData=()=>{
+        if(this.state.title && this.state.notice){
+            alert("please fill the data")
+        }else{
+            this.props.sendNotification(this.state)
+        }
+    }
     render() {
         return (
             <Container style={styles.container}>
@@ -87,7 +94,7 @@ class SendNotification extends Component {
                         })
                     }
                 </Picker>
-                <Button block style={{backgroundColor:'green',marginTop:20}} onPress={()=>this.props.sendNotification(this.state)}>
+                <Button block style={{backgroundColor:'green',marginTop:20}} onPress={this.sendData}>
                     <Text>Send Notification</Text>
                     <Ionicons name="send" size={24} color="white" />
                 </Button>
